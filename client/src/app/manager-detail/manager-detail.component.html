@@ -1,0 +1,20 @@
+<div>
+  <h2>Manager Details</h2>
+  <form>
+    <fieldset disabled>
+      <div class="form-group">
+        <label for="disabledTextInput">User ID</label>
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="" value="{{user$?.user_id}}">
+      </div>
+      <div class="form-group">
+        <label for="disabledTextInputName">Name</label>
+        <input type="text" id="disabledTextInputName" class="form-control" placeholder="" value="{{user$?.name}}">
+      </div>
+      <div class="form-group">
+        <label for="disabledTextInputSurname">Surname</label>
+        <input type="text" id="disabledTextInputSurname" class="form-control" placeholder="" value="{{user$?.surname}}">
+      </div>
+    </fieldset>
+  </form>
+  <a class="btn btn-primary" routerLink="/managers">Back to list</a>
+</div>

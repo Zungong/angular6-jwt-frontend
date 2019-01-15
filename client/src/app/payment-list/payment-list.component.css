@@ -1,0 +1,31 @@
+.cell-header-details {
+    display: none;
+}
+
+.payment-row-style {
+    flex-wrap: wrap;
+}
+.cell-data-details {
+    flex-basis: 100%;
+    padding: 0;
+    display: none;
+}
+.payment-row-style.expanded .cell-data-details {
+    display: flex;
+    flex-wrap: wrap;
+}
+.cell-data-details-inner1 {
+    /*flex: 2;*/
+    width: 66%;
+    float: left;
+    padding-left: 24px;
+}
+.cell-data-details-inner2 {
+    flex: 1;
+    padding-right: 24px;
+}
+
+.cell-details-wrapper {
+    justify-content: space-between;
+    padding-right: 24px;
+}

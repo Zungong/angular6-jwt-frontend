@@ -1,0 +1,56 @@
+<div style="text-align: right;">
+  <mat-form-field>
+    <input matInput #start_date [matDatepicker]="picker1" placeholder="Start date">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>&nbsp;&nbsp;
+  <mat-form-field>
+    <input matInput #end_date [matDatepicker]="picker2" placeholder="End date">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>&nbsp;&nbsp;
+  <button mat-raised-button color="warn" (click)="setRange(start_date.value, end_date.value)">Search</button>
+</div>
+<div class="example-container mat-elevation-z8">
+  <mat-table class="list-table-style" #table [dataSource]="dataSourcePayment">
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="surname">
+      <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.surname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="total_amount">
+      <mat-header-cell *matHeaderCellDef> Total Amount </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="cell-details-wrapper"> {{element.total_amount}}
+        <button mat-flat-button color="primary" aria-label="expand" (click)="toggleDetails(element);"><mat-icon *ngIf="!element.expanded">arrow_drop_down</mat-icon><mat-icon *ngIf="element.expanded">arrow_right</mat-icon></button>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <mat-header-cell *matHeaderCellDef class="cell-header-details">  </mat-header-cell>
+      <mat-cell *matCellDef="let element" class="cell-data-details">
+        <ng-container *ngFor="let pay of element.bookings_payments">
+          <div class="cell-data-details-inner1">{{pay.creation_date}}</div>
+          <div class="cell-data-details-inner2">{{pay.amount}}</div>
+        </ng-container>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row class="list-header-style" 
+                    *matHeaderRowDef="displayedColumns">                  
+    </mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="payment-row-style {{row.expanded ? 'expanded' : 'collapsed'}}"></mat-row>
+    
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons>
+  </mat-paginator>
+</div>
